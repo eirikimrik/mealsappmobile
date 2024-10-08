@@ -1,6 +1,8 @@
 # Meals application
 
 Got the starting point from a udemy course, similar to the course for flutter.
+We had some issues getting started from this template, because it was so outdated. So it took us a few hours to get it
+running without errors.
 
 ### Extra features
 
