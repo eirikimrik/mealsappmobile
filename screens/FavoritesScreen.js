@@ -1,14 +1,14 @@
-import { useContext } from 'react';
-import { View, Text, FlatList, StyleSheet } from 'react-native';
-import MealItem from '../components/MealItem';
-import { FavoritesContext } from '../context/FavoritesContext';
-import { MEALS } from '../data/dummy-data';
+import { useContext } from "react";
+import { View, Text, FlatList, StyleSheet } from "react-native";
+import MealItem from "../components/MealItem";
 
-function FavoritesScreen() {
-  const favoriteMealsCtx = useContext(FavoritesContext);
+import { MEALS } from "../data/dummy-data";
+import { FavoritesContext } from "../context/favorites-context";
 
+function FavoritesScreen({ navigation }) {
+  const favoritesCtx = useContext(FavoritesContext);
   const favoriteMeals = MEALS.filter((meal) =>
-    favoriteMealsCtx.ids.includes(meal.id)
+    favoritesCtx.favoriteMeals.includes(meal.id),
   );
 
   if (favoriteMeals.length === 0) {
@@ -19,20 +19,26 @@ function FavoritesScreen() {
     );
   }
 
+  function renderMealItem(itemData) {
+    const item = itemData.item;
+
+    const mealItemProps = {
+      id: item.id,
+      title: item.title,
+      imageUrl: item.imageUrl,
+      affordability: item.affordability,
+      complexity: item.complexity,
+      duration: item.duration,
+    };
+
+    return <MealItem {...mealItemProps} />;
+  }
+
   return (
     <FlatList
       data={favoriteMeals}
       keyExtractor={(item) => item.id}
-      renderItem={({ item }) => (
-        <MealItem
-          id={item.id}
-          title={item.title}
-          imageUrl={item.imageUrl}
-          duration={item.duration}
-          complexity={item.complexity}
-          affordability={item.affordability}
-        />
-      )}
+      renderItem={renderMealItem}
     />
   );
 }
@@ -42,11 +48,11 @@ export default FavoritesScreen;
 const styles = StyleSheet.create({
   rootContainer: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
   text: {
     fontSize: 18,
-    color: 'white',
+    color: "white",
   },
 });

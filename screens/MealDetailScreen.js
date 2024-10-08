@@ -1,25 +1,27 @@
-import { useContext, useLayoutEffect } from 'react';
-import { View, Text, Image, StyleSheet, ScrollView } from 'react-native';
+import { useLayoutEffect, useContext } from "react";
+import { View, Text, Image, StyleSheet, ScrollView } from "react-native";
 
-import IconButton from '../components/IconButton';
-import List from '../components/MealDetail/List';
-import Subtitle from '../components/MealDetail/Subtitle';
-import MealDetails from '../components/MealDetails';
-import { MEALS } from '../data/dummy-data';
-import { FavoritesContext } from '../context/FavoritesContext';
+import IconButton from "../components/IconButton";
+import List from "../components/MealDetail/List";
+import Subtitle from "../components/MealDetail/Subtitle";
+import MealDetails from "../components/MealDetails";
+import { MEALS } from "../data/dummy-data";
+import { FavoritesContext } from "../context/favorites-context";
 
 function MealDetailScreen({ route, navigation }) {
   const favoriteMealsCtx = useContext(FavoritesContext);
   const mealId = route.params.mealId;
   const selectedMeal = MEALS.find((meal) => meal.id === mealId);
 
-  const mealIsFavorite = favoriteMealsCtx.ids.includes(mealId);
+  const favoritesCtx = useContext(FavoritesContext);
 
-  function headerButtonPressHandler() {
+  const mealIsFavorite = favoritesCtx.favoriteMeals.includes(mealId);
+
+  function toggleFavoriteStatusHandler() {
     if (mealIsFavorite) {
-      favoriteMealsCtx.removeFavorite(mealId);
+      favoritesCtx.removeFavorite(mealId);
     } else {
-      favoriteMealsCtx.addFavorite(mealId);
+      favoritesCtx.addFavorite(mealId);
     }
   }
 
@@ -28,14 +30,14 @@ function MealDetailScreen({ route, navigation }) {
       headerRight: () => {
         return (
           <IconButton
-            icon={mealIsFavorite ? 'star' : 'star-outline'}
+            icon={mealIsFavorite ? "star" : "star-outline"}
             color="white"
-            onPress={headerButtonPressHandler}
+            onPress={toggleFavoriteStatusHandler}
           />
         );
       },
     });
-  }, [navigation, headerButtonPressHandler, mealIsFavorite]);
+  }, [navigation, toggleFavoriteStatusHandler, mealIsFavorite]);
 
   return (
     <ScrollView style={styles.rootContainer}>
@@ -66,23 +68,23 @@ const styles = StyleSheet.create({
     marginBottom: 32,
   },
   image: {
-    width: '100%',
+    width: "100%",
     height: 350,
   },
   title: {
-    fontWeight: 'bold',
+    fontWeight: "bold",
     fontSize: 24,
     margin: 8,
-    textAlign: 'center',
-    color: 'white',
+    textAlign: "center",
+    color: "white",
   },
   detailText: {
-    color: 'white',
+    color: "white",
   },
   listOuterContainer: {
-    alignItems: 'center',
+    alignItems: "center",
   },
   listContainer: {
-    width: '80%',
+    width: "80%",
   },
 });
