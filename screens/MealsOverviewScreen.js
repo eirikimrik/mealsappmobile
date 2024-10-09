@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useLayoutEffect } from 'react';
 import { View, FlatList, StyleSheet } from 'react-native';
 import MealItem from '../components/MealItem';
 import { MEALS } from '../data/dummy-data';
@@ -10,9 +10,13 @@ function MealsOverviewScreen({ route, navigation }) {
   const filtersCtx = useContext(FiltersContext);
 
   const displayedMeals = MEALS.filter((meal) => meal.categoryIds.includes(categoryId));
-
   const filteredMeals = filterMeals(displayedMeals, filtersCtx.filters);
 
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      title: 'Meals Overview',
+    });
+  }, [navigation])
 
   function renderMealItem(itemData) {
     const item = itemData.item;
