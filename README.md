@@ -34,7 +34,16 @@ system.
 
 ### User stories
 
--
+- As a user, I want to browse different meal categories, so that I can find meals that interest me.
+- As a user, I want to tap on a category tile, so that I can view the meals within that category.
+- As a user, I want to see a list of meals in the selected category, including their names, images, cooking time, complexity, and affordability, so that I can make an informed decision about which meal to try.
+- As a user, I want to click on a meal to view its details, so that I can see the ingredients and preparation steps.
+- As a user, I want to mark a meal as a favorite, so that I can easily find it later.
+- As a user, I want to remove a meal from my favorites, so that I can manage my list of favorite meals.
+- As a user, I want to view all my favorite meals in a dedicated screen, so that I can quickly access them without searching.
+- As a user, I want to apply filters (vegetarian, vegan, gluten-free and lactose-free) to my meal search, so that I can find meals that meet my dietary preferences.
+- As a user, I want to receive feedback messages (e.g., "You have no favorite meals yet") when I navigate to the favorites screen and have not added any meals, so that I understand the current state of the app.
+
 
 ### Class diagram
 
