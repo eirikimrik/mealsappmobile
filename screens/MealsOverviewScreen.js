@@ -1,25 +1,18 @@
-import { useLayoutEffect } from 'react';
+import React, { useContext } from 'react';
 import { View, FlatList, StyleSheet } from 'react-native';
-
 import MealItem from '../components/MealItem';
-import { MEALS, CATEGORIES } from '../data/dummy-data';
+import { MEALS } from '../data/dummy-data';
+import { filterMeals } from '../utils/filterMeals';
+import { FiltersContext } from '../context/FiltersContext';
 
 function MealsOverviewScreen({ route, navigation }) {
-  const catId = route.params.categoryId;
+  const { categoryId } = route.params;
+  const filtersCtx = useContext(FiltersContext);
 
-  const displayedMeals = MEALS.filter((mealItem) => {
-    return mealItem.categoryIds.indexOf(catId) >= 0;
-  });
+  const displayedMeals = MEALS.filter((meal) => meal.categoryIds.includes(categoryId));
 
-  useLayoutEffect(() => {
-    const categoryTitle = CATEGORIES.find(
-      (category) => category.id === catId
-    ).title;
+  const filteredMeals = filterMeals(displayedMeals, filtersCtx.filters);
 
-    navigation.setOptions({
-      title: categoryTitle,
-    });
-  }, [catId, navigation]);
 
   function renderMealItem(itemData) {
     const item = itemData.item;
@@ -28,17 +21,18 @@ function MealsOverviewScreen({ route, navigation }) {
       id: item.id,
       title: item.title,
       imageUrl: item.imageUrl,
-      affordability: item.affordability,
-      complexity: item.complexity,
       duration: item.duration,
+      complexity: item.complexity,
+      affordability: item.affordability,
     };
+
     return <MealItem {...mealItemProps} />;
   }
 
   return (
     <View style={styles.container}>
       <FlatList
-        data={displayedMeals}
+        data={filteredMeals}
         keyExtractor={(item) => item.id}
         renderItem={renderMealItem}
       />
