@@ -9,7 +9,6 @@ import { MEALS } from "../data/dummy-data";
 import { FavoritesContext } from "../context/favorites-context";
 
 function MealDetailScreen({ route, navigation }) {
-  const favoriteMealsCtx = useContext(FavoritesContext);
   const mealId = route.params.mealId;
   const selectedMeal = MEALS.find((meal) => meal.id === mealId);
 
