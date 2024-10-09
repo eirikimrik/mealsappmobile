@@ -54,7 +54,9 @@ function DrawerNavigator() {
         name="Filters"
         component={FiltersScreen}
         options={{
-          title: 'Filter Meals',
+          drawerIcon: ({ color, size }) => (
+            <Ionicons name="filter" color={color} size={size} />
+          ),
         }}
       />
     </Drawer.Navigator>
