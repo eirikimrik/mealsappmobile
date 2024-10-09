@@ -32,6 +32,10 @@ system.
 - State management is handled using React Context
 - Navigation is managed using React Navigation
 
+### User stories
+
+-
+
 ### Class diagram
 
-The class diagram is available under /assets/diagrams/
+The class diagram is available under /assets/diagrams/.
