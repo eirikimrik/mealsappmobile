@@ -25,6 +25,8 @@ system.
 - Add/remove favorite: Users can add or remove meals from their favorite list (Additional feature)
 - Favorites screen: Users can view all their favorite meals
 - Get random meal: Users can click a button that selects and displays a random meal from the meal list (Additional feature)
+- Filter meals: Users can apply filters using switches to refine their meal options. The meal list is updates the
+  available meals based on the selected filters.
 
 ### Data flow
 
@@ -44,14 +46,31 @@ system.
 - As a user, I want to apply filters (vegetarian, vegan, gluten-free and lactose-free) to my meal search, so that I can find meals that meet my dietary preferences.
 - As a user, I want to receive feedback messages (e.g., "You have no favorite meals yet") when I navigate to the favorites screen and have not added any meals, so that I understand the current state of the app.
 
-
 ### Class diagram
 
 The class diagram is available under /assets/diagrams/.
 
+### How to run
 
-### Video of app in action 
+1. Clone the repository and navigate to the project directory:
+
+```
+git clone <url>
+cd mealsappmobile
+```
+
+2. Install the dependencies:
+
+```
+npm install
+```
+
+3. Start the development server:
+
+```
+npx expo start
+```
+
+### Video of app in action
 
 https://github.com/user-attachments/assets/2be2b987-3846-42d8-918c-ca082518b183
-
-
