@@ -48,3 +48,10 @@ system.
 ### Class diagram
 
 The class diagram is available under /assets/diagrams/.
+
+
+### Video of app in action 
+
+https://github.com/user-attachments/assets/2be2b987-3846-42d8-918c-ca082518b183
+
+
