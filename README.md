@@ -17,6 +17,15 @@ this time, we focused on fixing the provided template and adding new features to
 running, we collaboratively implemented the additional features, like the random meal functionality and the favorites
 system.
 
+Initially, both of us worked together to resolve the errors in the outdated template. After we got it to run,
+we divided the tasks between us:
+
+- **Viljar** implemented the "get random meal" feature
+- **Eirik** added the filter functionality
+- We both worked on the Favorites screen and the functionality of it
+- **Eirik** created the class diagram and user stories
+- **Viljar** wrote the README file
+
 ### Features
 
 - Browse catories: Users can browse though different meal categories
